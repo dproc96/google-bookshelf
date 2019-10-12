@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SearchBar extends React.Component {
     handleInputChange = this.props.handleInputChange.bind(this);
@@ -7,7 +8,7 @@ class SearchBar extends React.Component {
         return (
             <div>
                 <input value={this.props.search} name="search" type="text" onChange={this.handleInputChange} />
-                <a href="/" onClick={this.handleFormSubmit}>Submit</a>
+                <Link to="/" onClick={this.handleFormSubmit}>Submit</Link>
             </div>
         )
     }
