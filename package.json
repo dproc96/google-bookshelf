@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "react-build": "cd client & npm run build"
+    "react-build": "cd client & react-scripts build"
   },
   "author": "Dan Proctor",
   "license": "ISC",
