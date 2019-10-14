@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://myapp.herokuapp.com/",
+  "homepage": "https://polar-escarpment-18352.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
