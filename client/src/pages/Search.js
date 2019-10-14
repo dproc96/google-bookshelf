@@ -8,8 +8,13 @@ class Search extends React.Component {
             overflow: "scroll",
             height: '100vh'
         }
+        const mobileStyle = {
+            width: '100vw',
+            height: 'max content',
+            overflow: 'visible'
+        }
         return (
-            <div style={style}>
+            <div style={this.props.isDesktop ? style : mobileStyle}>
                 <SearchResults {...this.props} />
             </div>
         )

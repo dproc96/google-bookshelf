@@ -30,8 +30,12 @@ class SearchResults extends React.Component {
             flexWrap: "wrap",
             justifyContent: "flex-start"
         }
+        const mobileStyle = {
+            ...style,
+            justifyContent: "space-around"
+        }
         return (
-            <div style={style}>
+            <div style={this.props.isDesktop ? style : mobileStyle}>
                 {results}
             </div>
         )

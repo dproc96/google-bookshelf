@@ -9,9 +9,14 @@ class Collection extends React.Component {
             overflow: "scroll",
             height: '100vh'
         }
+        const mobileStyle = {
+            width: '100vw',
+            height: 'max content',
+            overflow: 'visible'
+        }
         return (
-            <div style={style}>
-                <CollectionResults collection={this.props.collection} />
+            <div style={this.props.isDesktop ? style : mobileStyle}>
+                <CollectionResults {...this.props} />
             </div>
         )
     }

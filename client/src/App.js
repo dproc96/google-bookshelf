@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 import Sidebar from './components/Sidebar';
 import API from './utils/API';
 import Search from './pages/Search';
@@ -84,15 +85,24 @@ class App extends React.Component {
         }
         return (
             <Router>
-                <div style={style}>
-                    <Sidebar search={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleCollectionClick={this.getCollection}/>
-                    <Route exact path="/" component={() => { return <Search results={this.state.results} handleOpenModal={this.handleOpenModal} alterModal={this.alterModal} handleCloseModal={this.handleCloseModal} /> }} />
-                    <Route exact path="/collection" component={() => { return <Collection collection={this.state.collection} /> }} />
-                    <Modal style={modalStyle} isOpen={this.state.showModal}>
-                        {this.state.modalContents}
-                        <button onClick={this.handleCloseModal}>Close</button>
-                    </Modal>
-                </div>
+                <MediaQuery minWidth={768}>
+                    <div style={style}>
+                        <Sidebar isDesktop={true} search={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleCollectionClick={this.getCollection} />
+                        <Route exact path="/" component={() => { return <Search isDesktop={true} results={this.state.results} handleOpenModal={this.handleOpenModal} alterModal={this.alterModal} handleCloseModal={this.handleCloseModal} /> }} />
+                        <Route exact path="/collection" component={() => { return <Collection isDesktop={true} collection={this.state.collection} /> }} />
+                    </div>
+                </MediaQuery>
+                <MediaQuery maxWidth={767}>
+                    <div>
+                        <Sidebar isDesktop={false} search={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleCollectionClick={this.getCollection} />
+                        <Route exact path="/" component={() => { return <Search isDesktop={false} results={this.state.results} handleOpenModal={this.handleOpenModal} alterModal={this.alterModal} handleCloseModal={this.handleCloseModal} /> }} />
+                        <Route exact path="/collection" component={() => { return <Collection isDesktop={false} collection={this.state.collection} /> }} />
+                    </div>
+                </MediaQuery>
+                <Modal style={modalStyle} isOpen={this.state.showModal}>
+                    {this.state.modalContents}
+                    <button onClick={this.handleCloseModal}>Close</button>
+                </Modal>
             </Router>
         )
     }
