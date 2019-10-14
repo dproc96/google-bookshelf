@@ -22,7 +22,6 @@ class App extends React.Component {
     }
     getCollection = () => {
         API.getCollection().then(response => {
-            console.log(response)
             const results = response.data.map(book => {
                 return (
                     <BookCard inCollection={true} alterModal={this.alterModal} handleOpenModal={this.handleOpenModal} handleCloseModal={this.handleCloseModal} book={book} key={book._id} />
