@@ -1,16 +1,17 @@
 import React from 'react';
+import CollectionResults from '../components/CollectionResults'
 
 
 class Collection extends React.Component {
     render() {
         const style = {
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-around"
+            width: 'Calc(100vw - 200px)',
+            overflow: "scroll",
+            height: '100vh'
         }
         return (
             <div style={style}>
-                {this.props.collection}
+                <CollectionResults collection={this.props.collection} />
             </div>
         )
     }

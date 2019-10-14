@@ -27,7 +27,7 @@ class App extends React.Component {
                     <BookCard inCollection={true} alterModal={this.alterModal} handleOpenModal={this.handleOpenModal} handleCloseModal={this.handleCloseModal} book={book} key={book._id} />
                 )
             });
-            this.setState({collection: results})
+            this.setState({ collection: results })
         }).catch(error => {
             console.log(error);
         });
@@ -38,8 +38,7 @@ class App extends React.Component {
             [name]: value
         });
     }
-    handleFormSubmit = event => {
-        event.preventDefault();
+    handleFormSubmit = () => {
         API.getBooksExternal(this.state.search).then(results => {
             results = results.data.items
             this.setState({
@@ -86,9 +85,9 @@ class App extends React.Component {
         return (
             <Router>
                 <div style={style}>
-                    <Sidebar search={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
+                    <Sidebar search={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} handleCollectionClick={this.getCollection}/>
                     <Route exact path="/" component={() => { return <Search results={this.state.results} handleOpenModal={this.handleOpenModal} alterModal={this.alterModal} handleCloseModal={this.handleCloseModal} /> }} />
-                    <Route exact path="/collection" component={() => { return <Collection collection={this.state.collection}/> }} />
+                    <Route exact path="/collection" component={() => { return <Collection collection={this.state.collection} /> }} />
                     <Modal style={modalStyle} isOpen={this.state.showModal}>
                         {this.state.modalContents}
                         <button onClick={this.handleCloseModal}>Close</button>

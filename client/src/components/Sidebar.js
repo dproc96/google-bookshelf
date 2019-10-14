@@ -19,7 +19,7 @@ class Sidebar extends React.Component {
                 <h1>Google Bookshelf</h1>
                 <p>Start searching books to add them to the collection or take a look at what's already in the collection!</p>
                 <SearchBar {...this.props} />
-                <Link to="/collection">View Collection</Link>
+                <Link onClick={this.props.handleCollectionClick} to="/collection">View Collection</Link>
             </div>
         )
     }
